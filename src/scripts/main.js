@@ -2,32 +2,35 @@
 // Success handler
 // Success handler
 function handleSuccess() {
-  const div = document.createElement("div");
-  div.className = "message";
-  div.textContent = "Promise was resolved!";
+  const div = document.createElement('div');
+
+  div.className = 'message';
+  div.textContent = 'Promise was resolved!';
   document.body.appendChild(div);
 }
 
 // Error handler
 function handleError() {
-  const div = document.createElement("div");
-  div.className = "message error-message";
-  div.textContent = "Promise was rejected!";
+  const div = document.createElement('div');
+
+  div.className = 'message error-message';
+  div.textContent = 'Promise was rejected!';
   document.body.appendChild(div);
 }
 
 // 🔥 czekamy aż DOM się załaduje
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
   // promise1 – resolve on click
   const promise1 = new Promise((resolve, reject) => {
-    const logo = document.querySelector(".logo");
+    const logo = document.querySelector('.logo');
 
     if (!logo) {
-      reject(new Error("Logo not found"));
+      reject(new Error('Logo not found'));
+
       return;
     }
 
-    logo.addEventListener("click", () => {
+    logo.addEventListener('click', () => {
       resolve();
     });
   });
@@ -35,11 +38,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // promise2 – reject after 3 seconds
   const promise2 = new Promise((resolve, reject) => {
     setTimeout(() => {
-      reject(new Error("Promise was rejected"));
+      reject(new Error('Promise was rejected'));
     }, 3000);
   });
 
-  // handlers
+  //
   promise1.then(handleSuccess).catch(handleError);
   promise2.then(handleSuccess).catch(handleError);
 });
